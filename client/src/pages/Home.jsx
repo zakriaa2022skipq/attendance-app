@@ -77,7 +77,7 @@ const Home = () => {
           <p>Lessons Enrolled: {lessons.length}</p>
         </div>
       </div>
-      <div className="flex mt-5 justify-start items-center mx-4 gap-2">
+      <div className="flex mt-5 justify-center items-center mx-4 gap-2">
         <FormControl fullWidth className="max-w-72 ">
           <InputLabel id="lesson">Lesson</InputLabel>
           <Select
@@ -120,21 +120,17 @@ const Home = () => {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-2 my-4 max-w-[550px] mx-auto">
-        <p className="text-base font-medium mb-1 border border-gray-500 text-center">
-          Date
-        </p>
-        <p className="text-base font-medium mb-1 border border-gray-500 text-center">
-          Attendance
-        </p>
-        {attendanceList}
-      </div>
-      {/* {studentsInLessonMutation.isSuccess &&
-        studentsInLessonMutation.data.length < 1 && (
-          <div className="m-4">
-            <p>No students enrolled in this lesson. Enroll students.</p>
-          </div>
-        )} */}
+      {studentAttendanceMutation.isSuccess && (
+        <div className="grid grid-cols-2 my-4 max-w-[550px] mx-auto">
+          <p className="text-base font-medium mb-1 border border-gray-500 text-center">
+            Date
+          </p>
+          <p className="text-base font-medium mb-1 border border-gray-500 text-center">
+            Attendance
+          </p>
+          {attendanceList}
+        </div>
+      )}
     </div>
   );
 };
