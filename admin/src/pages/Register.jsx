@@ -15,6 +15,7 @@ import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "../util/axios";
+import { useEffect } from "react";
 
 function Register() {
   const RegisterSchema = Yup.object().shape({
