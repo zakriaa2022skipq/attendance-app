@@ -217,7 +217,7 @@ const MarkAttendance = () => {
       );
     });
   return (
-    <div>
+    <div className="mt-20">
       <div className="flex mt-5 justify-between items-center mx-4">
         <DatePicker
           showIcon
@@ -246,14 +246,8 @@ const MarkAttendance = () => {
             variant="outlined"
             sx={{
               fontSize: "10px",
-              color: "hsl(169, 75%, 50%)",
-              borderColor: "hsl(169, 79%, 48%)",
               ":hover": {
-                borderColor: "hsl(169, 79%, 48%)",
                 backgroundColor: "tranparent",
-              },
-              ".MuiLoadingButton-loadingIndicator": {
-                color: "hsl(169, 79%, 48%)",
               },
             }}
           >

@@ -106,7 +106,7 @@ const Landing = () => {
               Student Attendance Portal
             </Typography>
             <Typography fontSize="28px" sx={{ color: "hsl(169, 79%, 37%)" }}>
-              Check your attendance in lessons
+              Check your record
             </Typography>
             <Box
               component="form"

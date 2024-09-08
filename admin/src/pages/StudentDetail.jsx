@@ -8,6 +8,10 @@ import LessonEnrollModal from "../components/LessonEnrollModal";
 import { LoadingButton } from "@mui/lab";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 const StudentDetail = () => {
   const { studentId } = useParams();
@@ -107,32 +111,50 @@ const StudentDetail = () => {
         </Fragment>
       );
     });
-  return (
-    <div className="my-10">
-      <p>First Name: {studentData?.firstName}</p>
-      <p>Last Name: {studentData?.lastName}</p>
-      <p>Email: {studentData?.email}</p>
-      <p className="text-center">Lessons Enrolled In</p>
-      <div className="ml-auto">
+  const card = (
+    <React.Fragment>
+      <CardContent>
+        <Typography
+          variant="h5"
+          component="div"
+          sx={{ textAlign: "center", margin: "8px" }}
+        >
+          Student Detail
+        </Typography>
+        <Typography variant="body2">
+          <span className="text-slate-600">First Name: </span>
+          {studentData.firstName}
+        </Typography>
+        <Typography variant="body2">
+          <span className="text-slate-600">Last Name: </span>
+          {studentData?.lastName}
+        </Typography>
+        <Typography variant="body2">
+          <span className="text-slate-600">Email: </span>
+          {studentData?.email}
+        </Typography>
+        <Typography variant="body2">
+          <span className="text-slate-600">Lessons Enrolled: </span>
+          {lessonsEnrolled?.length}
+        </Typography>
+      </CardContent>
+      <CardActions>
         <Button
-          variant="contained"
           size="small"
-          sx={{
-            backgroundColor: "hsl(169, 40%, 55%)",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            ":hover": {
-              backgroundColor: "hsl(169, 60%, 55%)",
-            },
-          }}
           onClick={() => {
             setLessonEnrollModal(true);
           }}
         >
-          New Lesson Enroll
+          Enroll Lesson
         </Button>
-      </div>
+      </CardActions>
+    </React.Fragment>
+  );
+  return (
+    <div className="my-10 mt-20">
+      <Box sx={{ minWidth: 275, maxWidth: "300px", mx: "auto" }}>
+        <Card variant="outlined">{card}</Card>
+      </Box>
       <div className="grid grid-cols-3 m-4">
         <p className="text-base font-medium mb-1 border border-gray-500 text-center">
           Title

@@ -66,16 +66,12 @@ const Lesson = () => {
     <div className="mx-auto mt-20">
       <div className="ml-auto">
         <Button
-          variant="contained"
+          variant="outlined"
           size="small"
           sx={{
-            backgroundColor: "hsl(169, 40%, 55%)",
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
-            ":hover": {
-              backgroundColor: "hsl(169, 60%, 55%)",
-            },
           }}
           onClick={() => {
             setAddLessontModal(true);

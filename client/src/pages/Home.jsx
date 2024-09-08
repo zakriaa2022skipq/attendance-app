@@ -1,14 +1,27 @@
 import LoadingButton from "@mui/lab/LoadingButton";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
 import { useMutation } from "react-query";
 import axios from "../util/axios";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const userDetail = useSelector((state) => state.user);
   const lessons = userDetail.lessons;
   const [lesson, setLesson] = useState("");
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setLesson(event.target.value);
   };
@@ -68,13 +81,56 @@ const Home = () => {
   });
   return (
     <div>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            ></IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Student Portal
+            </Typography>
+            <Button
+              color="inherit"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Logout
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
+
       <div className="m-4 flex justify-center">
         <div className="border border-gray-400 p-10">
-          <p className="font-medium">Student Profile</p>
-          <p>First Name: {userDetail.firstName}</p>
-          <p>Last Name: {userDetail.lastName}</p>
-          <p>Email: {userDetail.email}</p>
-          <p>Lessons Enrolled: {lessons.length}</p>
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{ textAlign: "center", margin: "8px" }}
+          >
+            Student Detail
+          </Typography>
+          <Typography variant="body2" sx={{ margin: "12px" }}>
+            <span className="text-slate-600">First Name: </span>
+            {userDetail.firstName}
+          </Typography>
+          <Typography variant="body2" sx={{ margin: "12px" }}>
+            <span className="text-slate-600">Last Name: </span>
+            {userDetail?.lastName}
+          </Typography>
+          <Typography variant="body2" sx={{ margin: "12px" }}>
+            <span className="text-slate-600">Email: </span>
+            {userDetail?.email}
+          </Typography>
+          <Typography variant="body2" sx={{ margin: "12px" }}>
+            <span className="text-slate-600">Lessons Enrolled: </span>
+            {lessons?.length}
+          </Typography>
         </div>
       </div>
       <div className="flex mt-5 justify-center items-center mx-4 gap-2">
